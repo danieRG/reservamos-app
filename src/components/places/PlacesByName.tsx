@@ -1,25 +1,34 @@
 import { useEffect, useState } from "react";
-import { Card, CardHeader, Grid, Paper, Box } from "@mui/material";
-import { Place } from "../../interfaces";
-import { CardList } from "./CardList";
+import { Card, CardHeader, Grid, Paper, Box, Button } from "@mui/material";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { PlaceByName } from "../../interfaces";
 import reservamosApi from "../../api/reservamosAPI";
+import { CardList } from "./CardList";
 
-export const PlacesList = () => {
-    const [places, setPlaces] = useState<Place[]>([]);
+export const PlacesByName = () => {
+    const [placesByName, setPlacesByName] = useState<PlaceByName[]>([]);
 
-    const getPlaces = async() => {
-        const {data} = await reservamosApi.get<Place[]>("/places");
-        setPlaces(data);
+    let { name } = useParams();
+    const {state} = useLocation();
+    const { display } : any = state;
+
+    let navigate = useNavigate();
+
+    const getPlacesByName = async() => {
+        const {data} = await reservamosApi.get<PlaceByName[]>(`/places?q=${name}`);
+        setPlacesByName(data);
     }
 
     useEffect(() => {
-        getPlaces();
+        getPlacesByName();
     },[])
+
 
   return (
     <Grid item xs={12} sm={12}>
         <Card>
-            <CardHeader title='Places' />
+            <CardHeader title={display} />
+            <Button variant="outlined" onClick={() => navigate(`/`)}>Home</Button>
             <Paper sx={{
                 height: 'calc(100vh - 100px)',
                 overflow: 'scroll',
@@ -37,18 +46,18 @@ export const PlacesList = () => {
                     }}
                 >
                     {
-                        places.map(place =>(
+                        placesByName.map(place =>(
                             <CardList 
                                 key={place.id}
                                 place = {place}
-                                type='main' 
+                                type='placesByName'
                             />
                         ))
                     }
                     
                 </Box>
             </Paper>
-      </Card>
+        </Card>
     </Grid>
   )
 }

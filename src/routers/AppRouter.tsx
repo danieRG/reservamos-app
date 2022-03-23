@@ -1,11 +1,15 @@
-import { Routes, Route, Link } from "react-router-dom";
-import { Places, PlaceDetail } from "../components/places";
+import { Routes, Route } from "react-router-dom";
+import { Places, PlacesByName, PlaceDetail } from "../components/places";
+
 
 export const AppRouter = () => {
   return (
     <Routes>
         <Route path="/" element={<Places />} />
-        <Route path="detail" element={<PlaceDetail />} />
+        <Route path="places/:name" element={<PlacesByName />} />
+        <Route path="place/:name" element={<PlaceDetail />} />
+
+    
   </Routes>
   )
 }
