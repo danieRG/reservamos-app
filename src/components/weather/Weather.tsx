@@ -10,7 +10,6 @@ interface Props {
 export const Weather:FC<Props> = ({ lat, long }) => {
     const [icon, setIcon] = useState<string>('01d');
     const [temp, setTemp] = useState<number>(0);
-    const [description, setDescription] = useState<string>('');
 
     const getCurrentWeather = async (lat: string, long: string) => {
         
@@ -20,7 +19,6 @@ export const Weather:FC<Props> = ({ lat, long }) => {
       
         setIcon(icon);
         setTemp(temp);
-        setDescription(description);
       }
     
       useEffect(() => {
