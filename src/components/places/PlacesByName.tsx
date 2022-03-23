@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Card, CardHeader, Grid, Paper, Box, Button } from "@mui/material";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { Card, CardHeader, Grid, Paper, Box } from "@mui/material";
+import { useParams, useLocation } from "react-router-dom";
 import { PlaceByName } from "../../interfaces";
 import reservamosApi from "../../api/reservamosAPI";
 import { CardList } from "./CardList";
@@ -12,8 +12,6 @@ export const PlacesByName = () => {
     let { slug } = useParams();
     const {state} = useLocation();
     const { display } : any = state;
-
-    let navigate = useNavigate();
 
     const getPlacesByName = async() => {
         const {data} = await reservamosApi.get<PlaceByName[]>(`/places?q=${slug}`);
