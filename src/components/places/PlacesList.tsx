@@ -19,13 +19,14 @@ export const PlacesList = () => {
   return (
     <Grid item xs={12} sm={12}>
         <Card>
-            <CardHeader title='Places' />
-            <Paper sx={{
-                height: 'calc(100vh - 100px)',
-                overflow: 'scroll',
-                backgroundColor: 'transparent',
-                padding: '3px 5px',
-            }}
+            <CardHeader title='Recommended places' />
+            <Paper 
+                sx={{
+                    height: 'calc(100vh - 100px)',
+                    overflow: 'scroll',
+                    backgroundColor: 'transparent',
+                    padding: '3px 5px',
+                }}
             >
                 <Box
                     sx={{

@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import { useNavigate  } from "react-router-dom";
-import { Card, CardActionArea, CardActions, CardContent, Typography } from "@mui/material";
+import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
 
 interface Props {
     place: {
@@ -31,11 +31,6 @@ export const CardList:FC<Props> = ({ place, type }) => {
                 }}>
                     {place.display}
                 </Typography>
-                <CardActions sx={{ display:'flex', justifyContent:'end', paddingRight:2}}>
-                    <Typography variant='body2'>
-                        Today
-                    </Typography>
-                </CardActions>
             </CardContent>
         </CardActionArea>
     </Card>

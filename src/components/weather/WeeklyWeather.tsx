@@ -1,11 +1,8 @@
 import { FC, useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { weatherByPlace } from "../../utils";
-import { Weather } from "../weather";
-import { Box, Card, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
 import moment from "moment";
+import { Box, Card, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
 import { WeatherElement } from "../../interfaces";
-
+import { weatherByPlace } from "../../utils";
 
 interface Props {
     lat: string;
@@ -30,10 +27,11 @@ export const WeeklyWeather:FC<Props> = ({ lat, long }) => {
     <Box
         sx={{
             p: 2,
-            bgcolor: 'background.default',
-            display: 'grid',
-            gridTemplateColumns: { md: '1fr 2fr 1fr 2fr'},
-            gap: 2,
+            display: 'flex',
+            gap: 4,
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: 'calc(40vh - 16px)',
         }}
     >
     {
@@ -41,18 +39,24 @@ export const WeeklyWeather:FC<Props> = ({ lat, long }) => {
             <Card 
                 sx={{ 
                     maxWidth: 150, 
-                    backgroundColor: item.temp.max > 25 ? '#d63031' : '#74b9ff', 
+                    backgroundColor: item.temp.max > 25 ? '#d63031' : '#74b9ff'
                     }} 
                 key={item.dt}
             >
-            <CardHeader title={moment.unix(item.dt).format('dddd')} />
+            <CardHeader 
+                title={moment.unix(item.dt).format('dddd')}
+                />
              <CardMedia 
                 component='img'
                 image={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
                 height="80"
                 alt={item.weather[0].icon}  
             /> 
-                <CardContent>
+                <CardContent
+                    sx={{
+                        width: 'calc(90vw - 100px)',
+                    }}
+                 >
                     <Typography variant="subtitle2">
                         {item.weather[0].description}
                     </Typography>
