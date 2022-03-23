@@ -8,14 +8,14 @@ import { CardList } from "./CardList";
 export const PlacesByName = () => {
     const [placesByName, setPlacesByName] = useState<PlaceByName[]>([]);
 
-    let { name } = useParams();
+    let { slug } = useParams();
     const {state} = useLocation();
     const { display } : any = state;
 
     let navigate = useNavigate();
 
     const getPlacesByName = async() => {
-        const {data} = await reservamosApi.get<PlaceByName[]>(`/places?q=${name}`);
+        const {data} = await reservamosApi.get<PlaceByName[]>(`/places?q=${slug}`);
         setPlacesByName(data);
     }
 

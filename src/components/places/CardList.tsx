@@ -8,6 +8,7 @@ interface Props {
         city_slug: string;
         lat: string;
         long: string;
+        slug: string;
     };
     type: string;
 }
@@ -17,8 +18,8 @@ export const CardList:FC<Props> = ({ place, type }) => {
     const viewPlace = (type: string) => {
 
         type === 'main' 
-        ? navigate(`/places/${place.city_slug}`,{ state: { display: place.display } })
-        : navigate(`/place/${place.city_slug}`,{ state: { display: place.display, lat: place.lat, long: place.long } })
+        ? navigate(`/places/${place.slug}`,{ state: { display: place.display } })
+        : navigate(`/place/${place.slug}`,{ state: { display: place.display, lat: place.lat, long: place.long } })
     }
 
   return (
