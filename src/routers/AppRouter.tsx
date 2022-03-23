@@ -6,7 +6,7 @@ export const AppRouter = () => {
   return (
     <Routes>
         <Route path="/" element={<Places />} />
-        <Route path="places/:name" element={<PlacesByName />} />
+        <Route path="places/:slug" element={<PlacesByName />} />
         <Route path="place/:name" element={<PlaceDetail />} />
 
     

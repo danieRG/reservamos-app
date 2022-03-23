@@ -9,10 +9,8 @@
  */
 import axios from "axios";
 
-export const weatherByPlace = async (lat: string, lon: string) => {
-   // https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+export const weatherByPlace = async (lat: number, lon: number) => {
     const response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=a5a47c18197737e8eeca634cd6acb581&units=metric`);
-    
     return response
 
 }
