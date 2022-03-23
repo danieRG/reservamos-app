@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Card, CardHeader, Grid, Paper, Box } from "@mui/material";
 import { useParams, useLocation } from "react-router-dom";
-import { PlaceByName } from "../../interfaces";
-import reservamosApi from "../../api/reservamosAPI";
+import { Card, CardHeader, Grid, Paper, Box } from "@mui/material";
 import { CardList } from "./CardList";
 import { Layout } from "../layout";
+import { PlaceByName } from "../../interfaces";
+import reservamosApi from "../../api/reservamosAPI";
+
 
 export const PlacesByName = () => {
     const [placesByName, setPlacesByName] = useState<PlaceByName[]>([]);

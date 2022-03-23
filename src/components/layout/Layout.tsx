@@ -1,5 +1,5 @@
-import { Grid } from '@mui/material';
 import { FC } from 'react';
+import { Grid } from '@mui/material';
 import { Navbar } from '../navbar';
 
 interface Props {

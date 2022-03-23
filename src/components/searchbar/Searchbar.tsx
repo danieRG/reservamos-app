@@ -1,12 +1,12 @@
 
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { Grid, List, ListItem, Box } from '@mui/material';
 import reservamosApi from '../../api/reservamosAPI';
 import { PlaceByName } from '../../interfaces';
-import { useState, useEffect, ChangeEventHandler } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -79,10 +79,13 @@ export const Searchbar = () => {
         }}
       >
         <Search>
-
+            <SearchIconWrapper>
+                <SearchIcon />
+            </SearchIconWrapper>
             <StyledInputBase
                 placeholder="Search for a city..."
                 inputProps={{ 'aria-label': 'search' }}
+                value={slug}
                 onChange={handlerChange}
             />
             <Box sx={{
