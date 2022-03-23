@@ -1,6 +1,7 @@
 import { AppBar, IconButton, Toolbar, Typography } from "@mui/material"
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import { Link } from "react-router-dom";
+import { Searchbar } from "../searchbar/Searchbar";
 export const Navbar = () => {
 
   return (
@@ -20,6 +21,7 @@ export const Navbar = () => {
                     Home
                 </Link>
             </Typography>
+            <Searchbar />
         </Toolbar>
     </AppBar>
   )

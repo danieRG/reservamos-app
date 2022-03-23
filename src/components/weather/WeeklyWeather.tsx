@@ -24,7 +24,7 @@ export const WeeklyWeather:FC<Props> = ({ lat, long }) => {
     
       useEffect(() => {
         getWeeklyWeather( lat, long)
-      }, [])
+      }, [lat, long])
 
   return (
     <Box

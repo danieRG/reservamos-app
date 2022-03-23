@@ -1,20 +1,25 @@
-import { Card, CardContent, CardHeader, Grid } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Button, Card, CardContent, CardHeader, Grid } from "@mui/material";
+import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { weatherByPlace } from "../../utils";
 import { Layout } from "../layout";
-import { Weather, WeeklyWeather } from "../weather";
+import { WeeklyWeather } from "../weather";
 
 export const PlaceDetail = () => {
-  const [icon, setIcon] = useState('01d');
-  const [description, setDescription] = useState('No data to show');
-  const [temp, setTemp] = useState(0);
   const {state} = useLocation();
 
   const { lat, long, display } : any = state;
-
+  
   return (
     <Layout>
+{/*       <Button variant="contained"
+        sx={{
+          mt: 3,
+          ml: 3,
+        }}
+        onClick={() => navigate(`/places/${slug}`)}
+      >
+        Go Back
+      </Button> */}
       <Grid item xs={12} sm={12}>
         <Card>
           <CardHeader title={display} />
