@@ -1,14 +1,28 @@
 import {FC} from 'react';
+import { useNavigate  } from "react-router-dom";
 import { Card, CardActionArea, CardActions, CardContent, Typography } from "@mui/material";
 
 interface Props {
     place: {
         display: string;
+        city_slug: string;
+        lat: string;
+        long: string;
     };
+    type: string;
 }
-export const CardList:FC<Props> = ({ place }) => {
+export const CardList:FC<Props> = ({ place, type }) => {
+    let navigate = useNavigate();
+
+    const viewPlace = (type: string) => {
+
+        type === 'main' 
+        ? navigate(`/places/${place.city_slug}`,{ state: { display: place.display } })
+        : navigate(`/place/${place.city_slug}`,{ state: { display: place.display, lat: place.lat, long: place.long } })
+    }
+
   return (
-    <Card >
+    <Card onClick={() => viewPlace(type)}>
         <CardActionArea>
             <CardContent>
                 <Typography sx={{
@@ -18,7 +32,7 @@ export const CardList:FC<Props> = ({ place }) => {
                 </Typography>
                 <CardActions sx={{ display:'flex', justifyContent:'end', paddingRight:2}}>
                     <Typography variant='body2'>
-                        Details
+                        Today
                     </Typography>
                 </CardActions>
             </CardContent>
