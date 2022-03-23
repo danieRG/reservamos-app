@@ -8,8 +8,6 @@ export const AppRouter = () => {
         <Route path="/" element={<Places />} />
         <Route path="places/:slug" element={<PlacesByName />} />
         <Route path="place/:name" element={<PlaceDetail />} />
-
-    
   </Routes>
   )
 }

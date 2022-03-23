@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { weatherByPlace } from "../../utils";
+import { Layout } from "../layout";
 import { Weather, WeeklyWeather } from "../weather";
 
 export const PlaceDetail = () => {
@@ -13,22 +14,24 @@ export const PlaceDetail = () => {
   const { lat, long, display } : any = state;
 
   return (
-    <Grid item xs={12} sm={12}>
-      <Card>
-        <CardHeader title={display} />
-        <CardContent>
-          <WeeklyWeather 
-            lat={lat}
-            long={long}
-          />
-{/*             <Weather 
-              temp={ temp }
-              icon = { icon }
-              description = { description }
-            /> */}
-        </CardContent>
-      </Card>
+    <Layout>
+      <Grid item xs={12} sm={12}>
+        <Card>
+          <CardHeader title={display} />
+          <CardContent>
+            <WeeklyWeather 
+              lat={lat}
+              long={long}
+            />
+  {/*             <Weather 
+                temp={ temp }
+                icon = { icon }
+                description = { description }
+              /> */}
+          </CardContent>
+        </Card>
 
-    </Grid>
+      </Grid>
+    </Layout>
   )
 }

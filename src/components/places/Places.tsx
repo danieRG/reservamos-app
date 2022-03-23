@@ -1,11 +1,11 @@
-import { Grid } from '@mui/material';
+import { Layout } from '../layout';
 import { PlacesList } from './PlacesList';
 
 
 export const Places = () => {
   return (
-    <Grid container spacing={2}>
+    <Layout>
         <PlacesList />
-    </Grid>
+    </Layout>
   )
 }
