@@ -53,14 +53,14 @@ export const WeeklyWeather:FC<Props> = ({ lat, long }) => {
                 alt={item.weather[0].icon}  
             /> 
                 <CardContent>
+                    <Typography variant="subtitle2">
+                        {item.weather[0].description}
+                    </Typography>
                     <Typography variant="body2">
                         Min {item.temp.min} °C 
                     </Typography>
                     <Typography variant="body2">
                         Max {item.temp.max} °C
-                    </Typography>
-                    <Typography variant="subtitle2">
-                        {item.weather[0].description}
                     </Typography>
                 </CardContent>
         </Card>

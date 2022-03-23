@@ -4,6 +4,7 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { PlaceByName } from "../../interfaces";
 import reservamosApi from "../../api/reservamosAPI";
 import { CardList } from "./CardList";
+import { Layout } from "../layout";
 
 export const PlacesByName = () => {
     const [placesByName, setPlacesByName] = useState<PlaceByName[]>([]);
@@ -25,39 +26,40 @@ export const PlacesByName = () => {
 
 
   return (
-    <Grid item xs={12} sm={12}>
-        <Card>
-            <CardHeader title={display} />
-            <Button variant="outlined" onClick={() => navigate(`/`)}>Home</Button>
-            <Paper sx={{
-                height: 'calc(100vh - 100px)',
-                overflow: 'scroll',
-                backgroundColor: 'transparent',
-                padding: '3px 5px',
-            }}
-            >
-                <Box
-                    sx={{
-                        p: 2,
-                        bgcolor: 'background.default',
-                        display: 'grid',
-                        gridTemplateColumns: { md: '1fr 1fr' },
-                        gap: 2,
-                    }}
+    <Layout>
+        <Grid item xs={12} sm={12}>
+            <Card>
+                <CardHeader title={display} />
+                <Paper sx={{
+                    height: 'calc(100vh - 100px)',
+                    overflow: 'scroll',
+                    backgroundColor: 'transparent',
+                    padding: '3px 5px',
+                }}
                 >
-                    {
-                        placesByName.map(place =>(
-                            <CardList 
-                                key={place.id}
-                                place = {place}
-                                type='placesByName'
-                            />
-                        ))
-                    }
-                    
-                </Box>
-            </Paper>
-        </Card>
-    </Grid>
+                    <Box
+                        sx={{
+                            p: 2,
+                            bgcolor: 'background.default',
+                            display: 'grid',
+                            gridTemplateColumns: { md: '1fr 1fr' },
+                            gap: 2,
+                        }}
+                    >
+                        {
+                            placesByName.map(place =>(
+                                <CardList 
+                                    key={place.id}
+                                    place = {place}
+                                    type='placesByName'
+                                />
+                            ))
+                        }
+                        
+                    </Box>
+                </Paper>
+            </Card>
+        </Grid>
+    </Layout>
   )
 }
