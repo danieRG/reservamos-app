@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//note: this api key would be replaced by an environment variable
 export const weatherByPlace = async (lat: number, lon: number) => {
     const response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=a5a47c18197737e8eeca634cd6acb581&units=metric`);
     return response
