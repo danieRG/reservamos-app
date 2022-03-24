@@ -14,7 +14,7 @@ export const Weather:FC<Props> = ({ lat, long }) => {
     const getCurrentWeather = async (lat: string, long: string) => {
         
         const {data} = await curretnWeatherByPlace(Number(lat), Number(long))
-        const { icon, description } = data.weather[0];
+        const { icon } = data.weather[0];
         const { temp } = data.main
       
         setIcon(icon);

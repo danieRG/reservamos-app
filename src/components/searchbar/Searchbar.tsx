@@ -52,11 +52,6 @@ export const Searchbar = () => {
     const [placesList, setPlacesList] = useState<PlaceByName[]>([]);
     let navigate = useNavigate();
 
-    const getPlaces = async() => {
-        const {data} = await reservamosApi.get<PlaceByName[]>(`/places?q=${slug}`);
-        setPlacesList(data);
-    }
-
     const handlerChange = (e: any ) => {
         setSlug(e.target.value);
     }
@@ -68,6 +63,12 @@ export const Searchbar = () => {
     }
 
     useEffect(() => {
+        
+        const getPlaces = async() => {
+            const {data} = await reservamosApi.get<PlaceByName[]>(`/places?q=${slug}`);
+            setPlacesList(data);
+        }
+
         getPlaces()
     },[slug])
 
