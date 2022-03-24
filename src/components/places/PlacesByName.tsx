@@ -5,10 +5,12 @@ import { CardList } from "./CardList";
 import { Layout } from "../layout";
 import { PlaceByName } from "../../interfaces";
 import reservamosApi from "../../api/reservamosAPI";
+import { Skeleton } from '../skeleton/Skeleton';
 
 
 export const PlacesByName = () => {
     const [placesByName, setPlacesByName] = useState<PlaceByName[]>([]);
+    const isLoading = placesByName.length === 0;
 
     let { slug } = useParams();
     const {state} = useLocation();
@@ -36,6 +38,7 @@ export const PlacesByName = () => {
                     padding: '3px 5px',
                 }}
                 >
+                    <Skeleton isLoading={isLoading} />
                     <Box
                         sx={{
                             p: 2,

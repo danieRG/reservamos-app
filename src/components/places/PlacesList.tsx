@@ -3,10 +3,12 @@ import { Card, CardHeader, Grid, Paper, Box } from "@mui/material";
 import { Place } from "../../interfaces";
 import { CardList } from "./CardList";
 import reservamosApi from "../../api/reservamosAPI";
+import { Skeleton } from "../skeleton";
 
 export const PlacesList = () => {
     const [places, setPlaces] = useState<Place[]>([]);
-
+    const isLoading = places.length === 0;
+    
     const getPlaces = async() => {
         const {data} = await reservamosApi.get<Place[]>("/places");
         setPlaces(data);
@@ -18,6 +20,7 @@ export const PlacesList = () => {
 
   return (
     <Grid item xs={12} sm={12}>
+        
         <Card>
             <CardHeader title='Recommended places' />
             <Paper 
@@ -28,6 +31,7 @@ export const PlacesList = () => {
                     padding: '3px 5px',
                 }}
             >
+                <Skeleton isLoading={isLoading} />
                 <Box
                     sx={{
                         p: 2,
