@@ -32,6 +32,12 @@ export const WeeklyWeather:FC<Props> = ({ lat, long }) => {
             alignItems: 'center',
             justifyContent: 'center',
             height: 'calc(40vh - 16px)',
+            '@media screen and (max-width: 980px)': {   
+                display: 'flex',
+                flexDirection: 'column',
+                height: 'calc(250vh - 15px)',
+
+            }
         }}
     >
     {
