@@ -14,16 +14,14 @@ export const PlacesByName = () => {
     const {state} = useLocation();
     const { display } : any = state;
 
+    const getPlacesByName = async() => {
+        const {data} = await reservamosApi.get<PlaceByName[]>(`/places?q=${slug}`);
+        setPlacesByName(data);
+    }
 
     useEffect(() => {
-
-        const getPlacesByName = async(slug:any) => {
-            const {data} = await reservamosApi.get<PlaceByName[]>(`/places?q=${slug}`);
-            setPlacesByName(data);
-        }
-
-        getPlacesByName(slug);
-    },[])
+        getPlacesByName();
+    },[])// eslint-disable-line react-hooks/exhaustive-deps
 
 
   return (
