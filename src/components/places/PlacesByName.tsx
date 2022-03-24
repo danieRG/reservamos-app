@@ -16,13 +16,13 @@ export const PlacesByName = () => {
 
 
     useEffect(() => {
-        
-        const getPlacesByName = async() => {
+
+        const getPlacesByName = async(slug:any) => {
             const {data} = await reservamosApi.get<PlaceByName[]>(`/places?q=${slug}`);
             setPlacesByName(data);
         }
 
-        getPlacesByName();
+        getPlacesByName(slug);
     },[])
 
 
